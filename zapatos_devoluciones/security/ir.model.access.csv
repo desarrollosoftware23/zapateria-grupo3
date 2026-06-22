@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zapateria_devolucion,zapateria.devolucion,model_zapateria_devolucion,,1,1,1,1
+access_zapateria_garantia,zapateria.garantia,model_zapateria_garantia,,1,1,1,1

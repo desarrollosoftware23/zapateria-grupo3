@@ -1,0 +1,17 @@
+
+<odoo>
+
+    <record id="view_zapato_form_extension" model="ir.ui.view">
+        <field name="name">zapatos.zapato.form.extension</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapato_form"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <field name="garantias_meses"/>
+            </xpath>
+        </field>
+
+    </record>
+
+</odoo>
