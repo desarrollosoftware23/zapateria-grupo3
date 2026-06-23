@@ -13,4 +13,3 @@ class ZapatosZapato(models.Model):
     precio = fields.Float(string='Precio')
     stock = fields.Integer(string='Stock')
     activo = fields.Boolean(string='Activo', default=True)
-    imagen = fields.Image(string='Imagen')

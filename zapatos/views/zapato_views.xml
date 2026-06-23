@@ -19,7 +19,6 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                <field name="imagen" widget="image" class="oe_avatar"/>
                     <group>
                         <field name="name"/>
                         <field name="talla"/>
