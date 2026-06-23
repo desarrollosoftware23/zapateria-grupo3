@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_zapato_form_valoracion" model="ir.ui.view">
+        <field name="name">zapatos.zapato.form.valoracion</field>
+        <field name="model">zapatos.zapato</field>
+        <field name="inherit_id" ref="zapatos.view_zapato_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Valoración">
+                    <field name="puntuacion"/>
+                    <field name="fecha_valoracion"/>
+                    <field name="comentario"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
