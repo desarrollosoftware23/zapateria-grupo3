@@ -1,17 +1,46 @@
-
 <odoo>
-
     <record id="view_zapato_form_extension" model="ir.ui.view">
         <field name="name">zapatos.zapato.form.extension</field>
         <field name="model">zapatos.zapato</field>
         <field name="inherit_id" ref="zapatos.view_zapato_form"/>
-
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
                 <field name="garantias_meses"/>
             </xpath>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Garantías" name="garantias">
+                        <field name="garantia_ids"
+                               mode="list"
+                               context="{'default_zapato_id': id}">
+                            <list>
+                                <field name="codigo"/>
+                                <field name="fecha_inicio"/>
+                                <field name="fecha_fin"/>
+                                <field name="dias_restantes"/>
+                                <field name="estado" widget="badge"
+                                       decoration-success="estado == 'activa'"
+                                       decoration-danger="estado == 'vencida'"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Devoluciones" name="devoluciones">
+                        <field name="devolucion_ids"
+                               mode="list"
+                               context="{'default_zapato_id': id}">
+                            <list>
+                                <field name="codigo"/>
+                                <field name="fecha"/>
+                                <field name="motivo"/>
+                                <field name="estado" widget="badge"
+                                       decoration-warning="estado == 'pendiente'"
+                                       decoration-success="estado == 'aprobada'"
+                                       decoration-danger="estado == 'rechazada'"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
         </field>
-
     </record>
-
 </odoo>

@@ -1,56 +1,106 @@
-
 <odoo>
-
-
     <record id="view_garantia_list" model="ir.ui.view">
         <field name="name">zapateria.garantia.list</field>
         <field name="model">zapateria.garantia</field>
-
         <field name="arch" type="xml">
-            <list>
+            <list decoration-danger="estado == 'vencida'"
+                  decoration-success="estado == 'activa'"
+                  decoration-muted="estado == 'cancelada'">
                 <field name="codigo"/>
+                <field name="cliente"/>
+                <field name="zapato_id"/>
+                <field name="tipo"/>
                 <field name="fecha_inicio"/>
                 <field name="fecha_fin"/>
-                <field name="estado"/>
-                <field name="zapato_id"/>
+                <field name="dias_restantes"/>
+                <field name="estado" widget="badge"
+                       decoration-success="estado == 'activa'"
+                       decoration-danger="estado == 'vencida'"
+                       decoration-muted="estado == 'cancelada'"/>
             </list>
         </field>
     </record>
 
-
     <record id="view_garantia_form" model="ir.ui.view">
         <field name="name">zapateria.garantia.form</field>
         <field name="model">zapateria.garantia</field>
-
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_cancelar"
+                            string="Cancelar Garantía"
+                            type="object"
+                            class="btn-danger"
+                            invisible="estado != 'activa'"/>
+                    <button name="action_reactivar"
+                            string="Reactivar"
+                            type="object"
+                            class="btn-success"
+                            invisible="estado != 'cancelada'"/>
+                    <field name="estado" widget="statusbar"
+                           statusbar_visible="activa,vencida,cancelada"/>
+                </header>
+
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="codigo" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="codigo"/>
-                        <field name="fecha_inicio"/>
-                        <field name="fecha_fin"/>
-                        <field name="descripcion"/>
-                        <field name="estado"/>
-                        <field name="zapato_id"/>
+                        <group string="Información Principal">
+                            <field name="zapato_id"/>
+                            <field name="cliente"/>
+                            <field name="tipo"/>
+                        </group>
+                        <group string="Vigencia">
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="dias_restantes" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Descripción">
+                        <field name="descripcion"
+                               nolabel="1"
+                               placeholder="Describe los términos y condiciones de la garantía..."/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
+    <record id="view_garantia_search" model="ir.ui.view">
+        <field name="name">zapateria.garantia.search</field>
+        <field name="model">zapateria.garantia</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="codigo"/>
+                <field name="cliente"/>
+                <field name="zapato_id"/>
+                <filter string="Activas" name="activas"
+                        domain="[('estado','=','activa')]"/>
+                <filter string="Vencidas" name="vencidas"
+                        domain="[('estado','=','vencida')]"/>
+                <filter string="Canceladas" name="canceladas"
+                        domain="[('estado','=','cancelada')]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Zapato" name="by_zapato"
+                            context="{'group_by': 'zapato_id'}"/>
+                    <filter string="Tipo" name="by_tipo"
+                            context="{'group_by': 'tipo'}"/>
+                    <filter string="Estado" name="by_estado"
+                            context="{'group_by': 'estado'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
     <record id="action_garantia" model="ir.actions.act_window">
         <field name="name">Garantías</field>
         <field name="res_model">zapateria.garantia</field>
         <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_garantia_search"/>
     </record>
-
-
-    <menuitem
-        id="menu_garantias"
-        name="Garantías"
-        parent="zapatos.menu_zapatos_root"
-        action="action_garantia"
-        sequence="30"/>
-
+    
+    <menuitem id="menu_garantias"  name="Garantías"  parent="zapatos.menu_zapatos_root"  action="action_garantia"  sequence="30"/>
 </odoo>
