@@ -5,18 +5,22 @@
         <field name="inherit_id" ref="zapatos.view_zapato_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group" position="after">
-                <group string="Detalles del calzado">
-                    <group string="Características">
-                        <field name="genero"/>
-                        <field name="tipo_calzado"/>
-                        <field name="temporada"/>
-                        <field name="impermeable"/>
-                    </group>
-                    <group string="Precio y descuento">
-                        <field name="porcentaje_descuento"/>
-                        <field name="precio_final" readonly="1"/>
-                    </group>
-                </group>
+                <notebook>
+                    <page string="Detalles del calzado">
+                        <group>
+                            <group string="Características">
+                                <field name="genero"/>
+                                <field name="tipo_calzado"/>
+                                <field name="temporada"/>
+                                <field name="impermeable" widget="boolean_toggle"/>
+                            </group>
+                            <group string="Precio y descuento">
+                                <field name="porcentaje_descuento"/>
+                                <field name="precio_final" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
             </xpath>
         </field>
     </record>
@@ -26,8 +30,10 @@
         <field name="inherit_id" ref="zapatos.view_zapato_list"/>
         <field name="arch" type="xml">
             <xpath expr="//list" position="inside">
-                <field name="genero"/>
-                <field name="tipo_calzado"/>
+                <field name="genero" widget="badge"/>
+                <field name="tipo_calzado" widget="badge"/>
+                <field name="temporada"/>
+                <field name="impermeable"/>
                 <field name="precio_final"/>
             </xpath>
         </field>
