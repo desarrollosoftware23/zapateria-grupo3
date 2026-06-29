@@ -4,7 +4,7 @@ class ZapatosValoracion(models.Model):
     _inherit = 'zapatos.zapato'
 
     puntuacion = fields.Selection([
-        ('0', 'Normal')
+        ('0', 'Normal'),
         ('1', '⭐'),
         ('2', '⭐⭐'),
         ('3', '⭐⭐⭐'),
