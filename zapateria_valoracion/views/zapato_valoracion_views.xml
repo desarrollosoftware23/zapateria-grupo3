@@ -5,12 +5,12 @@
         <field name="model">zapatos.zapato</field>
         <field name="inherit_id" ref="zapatos.view_zapato_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//sheet" position="inside">
+            <xpath expr="//group[1]" position="before">
                 <field name="imagen" widget="image" class="oe_avatar"/>
             </xpath>
 
             <xpath expr="//group" position="inside">
-                <field name="puntuacion"/>
+                <field name="puntuacion" widget="priority"/>
             </xpath>
         </field>
     </record>

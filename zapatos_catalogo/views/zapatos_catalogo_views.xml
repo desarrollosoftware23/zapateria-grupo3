@@ -9,6 +9,9 @@
             <xpath expr="//field[@name='talla']" position="after">
                 <field name="tipo_zapato"/>
                 <field name="temporada_recomendada" readonly="1"/>
+                <field name="fecha_ultima_venta"/>
+                <field name="publico_objetivo"/>
+                <field name="es_edicion_limitada"/>
             </xpath>
         </field>
     </record>

@@ -1,8 +1,8 @@
 {
     'name': 'zapatos_detalle',
-    'version': '1.0',
-    'summary': 'Detalles adicionales del calzado',
-    'description': 'Agrega características y precio con descuento al módulo de zapatos',
+    'version': '1.1',
+    'summary': 'Detalles y validaciones del calzado',
+    'description': 'Agrega características, precio con descuento y validaciones al módulo de zapatos',
     'author': 'Chriss',
     'category': 'Sales',
     'license': 'LGPL-3',
