@@ -8,6 +8,6 @@ class ZapatosValoracion(models.Model):
         ('1', '⭐'),
         ('2', '⭐⭐'),
         ('3', '⭐⭐⭐'),
-    ], string='Puntuación'),required=True
+    ], string='Puntuación', required=True)
 
     imagen = fields.Image(string='Imagen', max_width=256, max_height=256, required=True)
