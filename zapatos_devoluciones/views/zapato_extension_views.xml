@@ -8,7 +8,7 @@
                 <field name="garantias_meses"/>
             </xpath>
             <xpath expr="//sheet" position="inside">
-                <notebook>
+                <notebook invisible="not id">
                     <page string="Garantías" name="garantias">
                         <field name="garantia_ids"
                                mode="list"
