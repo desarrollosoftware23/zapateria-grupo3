@@ -28,6 +28,17 @@ class ZapatosCatalogo(models.Model):
         store=True,
     )
 
+    fecha_ultima_venta = fields.Date(string='Fecha última venta')
+
+    publico_objetivo = fields.Selection([
+        ('bebe', 'Bebé'),
+        ('nino', 'Niño'),
+        ('adulto', 'Adulto'),
+        ('unisex', 'Unisex'),
+    ], string='Público objetivo')
+
+    es_edicion_limitada = fields.Boolean(string='Edición limitada')
+
     @api.depends('tipo_zapato')
     def _compute_temporada_recomendada(self):
         recomendaciones = {
