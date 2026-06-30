@@ -7,8 +7,9 @@
                   decoration-success="estado == 'aprobada'"
                   decoration-danger="estado == 'rechazada'">
                 <field name="codigo"/>
-                <field name="cliente"/>
+                <field name="cliente_id"/>
                 <field name="zapato_id"/>
+                <field name='venta_id'/>
                 <field name="tipo"/>
                 <field name="fecha"/>
                 <field name="estado" widget="badge"
@@ -53,7 +54,8 @@
                     <group>
                         <group string="Información Principal">
                             <field name="zapato_id"/>
-                            <field name="cliente"/>
+                            <field name='venta_id'/>
+                            <field name="cliente_id" readonly="venta_id != False"/>
                             <field name="tipo"/>
                             <field name="fecha"/>
                         </group>
@@ -85,7 +87,8 @@
         <field name="arch" type="xml">
             <search>
                 <field name="codigo"/>
-                <field name="cliente"/>
+                <field name="cliente_id"/>
+                <field name='venta_id'/>
                 <field name="zapato_id"/>
                 <filter string="Pendientes" name="pendientes"
                         domain="[('estado','=','pendiente')]"/>

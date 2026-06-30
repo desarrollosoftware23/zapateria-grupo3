@@ -15,7 +15,9 @@ class Garantia(models.Model):
 
     zapato_id = fields.Many2one( 'zapatos.zapato', string='Zapato', required=True)
 
-    cliente = fields.Char( string='Cliente', required=True)
+    cliente_id = fields.Many2one('res.partner', string='Cliente')
+    
+    venta_id = fields.Many2one('sale.order', string='Orden de Venta')
 
     tipo = fields.Selection([
         ('fabricante', 'Fabricante'),
@@ -84,3 +86,8 @@ class Garantia(models.Model):
             if record.fecha_inicio and record.fecha_fin:
                 if record.fecha_fin < record.fecha_inicio:
                     raise ValidationError("La fecha fin no puede ser menor a la fecha inicio.")
+                
+    @api.onchange('venta_id')
+    def _onchange_venta_id(self):
+        if self.venta_id:
+            self.cliente_id = self.venta_id.partner_id

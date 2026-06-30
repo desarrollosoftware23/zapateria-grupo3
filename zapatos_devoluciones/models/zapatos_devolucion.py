@@ -14,7 +14,9 @@ class Devolucion(models.Model):
 
     zapato_id = fields.Many2one( 'zapatos.zapato', string='Zapato', required=True)
 
-    cliente = fields.Char( string='Cliente', required=True)
+    cliente_id = fields.Many2one('res.partner', string='Cliente', required=True)
+    
+    venta_id = fields.Many2one('sale.order', string='Orden de Venta')
 
     tipo = fields.Selection([
         ('cambio', 'Cambio de producto'),
@@ -68,3 +70,8 @@ class Devolucion(models.Model):
         for record in self:
             if record.fecha and record.fecha > fields.Date.today():
                 raise ValidationError( "La fecha de devolución no puede ser futura.")
+    
+    @api.onchange('venta_id')
+    def _onchange_venta_id(self):
+        if self.venta_id:
+            self.cliente_id = self.venta_id.partner_id

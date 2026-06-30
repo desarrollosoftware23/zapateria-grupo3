@@ -7,8 +7,9 @@
                   decoration-success="estado == 'activa'"
                   decoration-muted="estado == 'cancelada'">
                 <field name="codigo"/>
-                <field name="cliente"/>
                 <field name="zapato_id"/>
+                <field name="cliente_id"/>
+                <field name='venta_id'/>
                 <field name="tipo"/>
                 <field name="fecha_inicio"/>
                 <field name="fecha_fin"/>
@@ -50,7 +51,8 @@
                     <group>
                         <group string="Información Principal">
                             <field name="zapato_id"/>
-                            <field name="cliente"/>
+                            <field name='venta_id'/>
+                            <field name="cliente_id" readonly="venta_id != False"/>
                             <field name="tipo"/>
                         </group>
                         <group string="Vigencia">
@@ -75,8 +77,9 @@
         <field name="arch" type="xml">
             <search>
                 <field name="codigo"/>
-                <field name="cliente"/>
+                <field name="cliente_id"/>
                 <field name="zapato_id"/>
+                <field name='venta_id'/>
                 <filter string="Activas" name="activas"
                         domain="[('estado','=','activa')]"/>
                 <filter string="Vencidas" name="vencidas"

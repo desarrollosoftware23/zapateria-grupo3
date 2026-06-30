@@ -6,7 +6,7 @@
     'author': 'Dario Guayasamin',
     'category': 'Sales',
     'license': 'LGPL-3',
-    'depends': ['zapatos'],
+    'depends': ['zapatos','sale'],
     'data': [
         
         'views/zapato_extension_views.xml',
