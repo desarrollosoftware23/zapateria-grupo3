@@ -23,6 +23,7 @@ class ZapatosZapato(models.Model):
         ('todo_el_anio', 'Todo el año'),
     ], string='Temporada')
     impermeable = fields.Boolean(string='Impermeable', default=False, help='Marca si el calzado resiste el agua')
+    proveedor_id = fields.Many2one('res.partner', string='Proveedor', help='Contacto que distribuye este calzado')
     porcentaje_descuento = fields.Float(string='Porcentaje de descuento (%)', help='Valor entre 0 y 100 que se descuenta del precio')
     precio_final = fields.Float(string='Precio final', compute='_compute_precio_final', store=True, help='Se calcula automáticamente según el precio y el descuento')
 
@@ -35,6 +36,7 @@ class ZapatosZapato(models.Model):
                 registro.precio_final = registro.precio
             else:
                 registro.precio_final = 0
+
     def _es_numero(self, valor):
         return isinstance(valor, (int, float)) and not isinstance(valor, bool)
 

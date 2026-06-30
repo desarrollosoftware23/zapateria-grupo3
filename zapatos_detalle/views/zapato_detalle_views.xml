@@ -13,6 +13,7 @@
                                 <field name="tipo_calzado"/>
                                 <field name="temporada"/>
                                 <field name="impermeable" widget="boolean_toggle"/>
+                                <field name="proveedor_id"/>
                             </group>
                             <group string="Precio y descuento">
                                 <field name="porcentaje_descuento"/>
@@ -32,8 +33,7 @@
             <xpath expr="//list" position="inside">
                 <field name="genero" widget="badge"/>
                 <field name="tipo_calzado" widget="badge"/>
-                <field name="temporada"/>
-                <field name="impermeable"/>
+                <field name="proveedor_id"/>
                 <field name="precio_final"/>
             </xpath>
         </field>

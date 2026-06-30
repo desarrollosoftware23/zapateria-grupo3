@@ -1,12 +1,12 @@
 {
     'name': 'zapatos_detalle',
-    'version': '1.1',
-    'summary': 'Detalles y validaciones del calzado',
-    'description': 'Agrega características, precio con descuento y validaciones al módulo de zapatos',
+    'version': '1.2',
+    'summary': 'Detalles, validaciones y proveedor del calzado',
+    'description': 'Agrega características, precio con descuento, validaciones y vínculo con Contactos al módulo de zapatos',
     'author': 'Chriss',
     'category': 'Sales',
     'license': 'LGPL-3',
-    'depends': ['zapatos'],
+    'depends': ['zapatos', 'contacts'],
     'data': [
         'views/zapato_detalle_views.xml',
     ],
